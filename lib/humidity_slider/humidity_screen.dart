@@ -12,15 +12,14 @@ class HumidityScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-    return Provider(
-      create: (_) => HumidityConfig(25, 50),
-      child: ChangeNotifierProvider(
-        create: (BuildContext context) => Humidity(),
-        child: HSScaffold(
-          activeIndex: 1,
-          body: HumiditySliderPage(),
-        ),
+    return MultiProvider(
+      providers: [
+        Provider(create: (_) => HumidityConfig(25, 50)),
+        ChangeNotifierProvider(create: (_) => Humidity())
+      ],
+      child: HSScaffold(
+        activeIndex: 1,
+        body: HumiditySliderPage(),
       ),
     );
   }
@@ -33,7 +32,6 @@ class HumiditySliderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       alignment: Alignment.center,
       decoration: BoxDecoration(

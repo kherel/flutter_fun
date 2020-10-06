@@ -8,7 +8,7 @@ class HumidityCurevedLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: _SliderCliper(y),
+      clipper: _MovingCurvedCliper(y),
       child: Container(
         width: 41,
         decoration: BoxDecoration(
@@ -41,8 +41,8 @@ class HumidityCurevedLine extends StatelessWidget {
   }
 }
 
-class _SliderCliper extends CustomClipper<Path> {
-  _SliderCliper(this.centerY);
+class _MovingCurvedCliper extends CustomClipper<Path> {
+  _MovingCurvedCliper(this.centerY);
 
   final double centerY;
 
@@ -87,7 +87,7 @@ class _SliderCliper extends CustomClipper<Path> {
   }
 
   @override
-  bool shouldReclip(_SliderCliper oldClipper) {
+  bool shouldReclip(_MovingCurvedCliper oldClipper) {
     return oldClipper.centerY != centerY;
   }
 }
