@@ -1,8 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_fun/utils/navigation.dart';
+import 'humidity_slider/humidity_screen.dart';
 import 'today_list/today_list.dart';
 
 void main() {
@@ -12,12 +11,38 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle.dark.copyWith(statusBarBrightness: Brightness.dark),
-    );
     return MaterialApp(
       title: 'Flutter Fun',
-      home: TodayList(),
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          RaisedButton(
+            child: Text('HumiditySlider'),
+            onPressed: () => Navigator.of(context).push(
+              noAnimationRoute(HumidityScreen()),
+            ),
+          ),
+          RaisedButton(
+            child: Text('IOS 13 Today List'),
+            onPressed: () => Navigator.of(context).push(
+              noAnimationRoute(TodayListScreen()),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

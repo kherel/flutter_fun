@@ -2,11 +2,26 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'arrow_button.dart';
 import 'colors.dart';
 import 'header_icon.dart';
 import 'search.dart';
+
+class TodayListScreen extends StatelessWidget {
+  const TodayListScreen({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle.dark.copyWith(statusBarBrightness: Brightness.dark),
+    );
+    return Container(
+      child: TodayList(),
+    );
+  }
+}
 
 class TodayList extends StatelessWidget {
   const TodayList({Key key}) : super(key: key);

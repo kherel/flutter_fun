@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
+  google_fonts: ^1.1.0
+  provider: ^4.3.2+2
 
 dev_dependencies:
   flutter_test:
@@ -19,4 +21,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/background.jpg
+    - assets/design.png
+
+  fonts:
+    - family: FunIcons
+      fonts:
+        - asset: assets/fonts/FunIcons.ttf
 
