@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_fun/raw_rgba_fun/raw_rgba_screen.dart';
 import 'package:flutter_fun/utils/navigation.dart';
 import 'humidity_slider/humidity_screen.dart';
 import 'today_list/today_list.dart';
@@ -29,6 +30,12 @@ class Home extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          RaisedButton(
+            child: Text('ImageAnimationScreen'),
+            onPressed: () => Navigator.of(context).push(
+              noAnimationRoute(RawRgbaAnimationScreen()),
+            ),
+          ),
           RaisedButton(
             child: Text('HumiditySlider'),
             onPressed: () => Navigator.of(context).push(
