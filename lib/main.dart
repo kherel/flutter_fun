@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_fun/glitch/glitch_page_screen.dart';
 import 'package:flutter_fun/raw_rgba_fun/raw_rgba_screen.dart';
 import 'package:flutter_fun/utils/navigation.dart';
 import 'humidity_slider/humidity_screen.dart';
@@ -31,15 +32,21 @@ class Home extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           RaisedButton(
-            child: Text('ImageAnimationScreen'),
+            child: Text('Glitch effect'),
             onPressed: () => Navigator.of(context).push(
-              noAnimationRoute(RawRgbaAnimationScreen()),
+              noAnimationRoute(GlitchPageScreen()),
             ),
           ),
           RaisedButton(
             child: Text('HumiditySlider'),
             onPressed: () => Navigator.of(context).push(
               noAnimationRoute(HumidityScreen()),
+            ),
+          ),
+          RaisedButton(
+            child: Text('ImageAnimationScreen'),
+            onPressed: () => Navigator.of(context).push(
+              noAnimationRoute(RawRgbaAnimationScreen()),
             ),
           ),
           RaisedButton(

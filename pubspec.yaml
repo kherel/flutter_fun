@@ -20,8 +20,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/background.jpg
-    - assets/design.png
+    - assets/
 
   fonts:
     - family: FunIcons
