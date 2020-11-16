@@ -14,7 +14,7 @@ class HumidityScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider(create: (_) => HumidityConfig(25, 50)),
+        Provider(create: (_) => HumidityConfig()),
         ChangeNotifierProvider(create: (_) => Humidity())
       ],
       child: HSScaffold(
