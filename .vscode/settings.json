@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "${workspaceFolder}/linux",
+    "cSpell.words": [
+        "rgba"
+    ]
+}
