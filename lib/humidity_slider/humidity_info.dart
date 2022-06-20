@@ -124,7 +124,7 @@ class _AnimatedLetterState extends State<AnimatedLetter>
       setState(() {
         prevLetter = oldWidget.letter;
         currentLetter = widget.letter;
-        controller
+        controller!
           ..reset()
           ..forward();
       });

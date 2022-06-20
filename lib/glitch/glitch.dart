@@ -29,7 +29,7 @@ class _GlithEffectState extends State<GlithEffect>
     _timer = Timer.periodic(
       Duration(seconds: 3),
       (_) {
-        _controller
+        _controller!
           ..reset()
           ..forward();
       },

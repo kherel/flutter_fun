@@ -154,10 +154,10 @@ class _AnimatedTextState extends State<AnimatedText>
   @override
   void didUpdateWidget(AnimatedText oldWidget) {
     if (widget.isActive! && !oldWidget.isActive!) {
-      controller..forward();
+      controller!..forward();
     } else if (!widget.isActive! && oldWidget.isActive!) {
       isGoingUp = widget.activeValue! > widget.notActiveNumber!;
-      controller..reverse();
+      controller!..reverse();
     }
 
     super.didUpdateWidget(oldWidget);
