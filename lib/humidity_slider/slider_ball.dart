@@ -4,7 +4,7 @@ import 'package:flutter_fun/fun_icons_icons.dart';
 import 'package:flutter_fun/humidity_slider/theme.dart';
 
 class SliderBall extends StatelessWidget {
-  const SliderBall({Key key}) : super(key: key);
+  const SliderBall({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

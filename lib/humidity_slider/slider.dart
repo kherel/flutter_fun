@@ -24,25 +24,25 @@ class HumiditySlider extends StatelessWidget {
 }
 
 class SliderHandle extends StatefulWidget {
-  SliderHandle(this.oneUnit, {Key key}) : super(key: key);
+  SliderHandle(this.oneUnit, {Key? key}) : super(key: key);
   final double oneUnit;
   @override
   _SliderHandleState createState() => _SliderHandleState();
 }
 
 class _SliderHandleState extends State<SliderHandle> {
-  double dy = 400;
+  double? dy = 400;
   double diameter = kBallSize;
-  HumidityConfig config;
+  HumidityConfig? config;
 
-  double _min;
-  double _max;
-  double _stepHeight;
-  void Function(double) updateTrasitionalHumidity;
-  void Function() updateFinalHumidity;
+  late double _min;
+  double? _max;
+  late double _stepHeight;
+  late void Function(double) updateTrasitionalHumidity;
+  late void Function() updateFinalHumidity;
 
   void handleDrag(details) {
-    double newDy = (details.globalPosition.dy - diameter).clamp(_min, _max);
+    double? newDy = (details.globalPosition.dy - diameter).clamp(_min, _max);
 
     if (dy != newDy) {
       setState(() {
@@ -52,7 +52,7 @@ class _SliderHandleState extends State<SliderHandle> {
     }
   }
 
-  double Function(double) _calcualteHumidity;
+  late double Function(double?) _calcualteHumidity;
 
   @override
   void initState() {
@@ -64,23 +64,23 @@ class _SliderHandleState extends State<SliderHandle> {
     var fontSizeShift = kNumberFontSize / 2;
 
     var paddingTop =
-        widget.oneUnit * config.paddingTopInPercentage + fontSizeShift;
+        widget.oneUnit * config!.paddingTopInPercentage + fontSizeShift;
     var paddingBottom =
-        widget.oneUnit * config.paddingBottomInPercentage + fontSizeShift;
+        widget.oneUnit * config!.paddingBottomInPercentage + fontSizeShift;
     var height = widget.oneUnit * 100;
     var body = height - paddingTop - paddingBottom;
-    var stepsCount = config.list.length;
+    var stepsCount = config!.list.length;
     _stepHeight = body / (stepsCount - 1);
     var disacitvatedTopPart =
-        _stepHeight * (stepsCount - config.lastActiveIndex - 1);
-    var disacitvatedBottomPart = _stepHeight * (config.firstActiveIndex);
+        _stepHeight * (stepsCount - config!.lastActiveIndex - 1);
+    var disacitvatedBottomPart = _stepHeight * (config!.firstActiveIndex);
 
     _calcualteHumidity = (newDy) {
-      var procantage = 1 - (newDy - _min) / (_stepHeight * 5);
+      var procantage = 1 - (newDy! - _min) / (_stepHeight * 5);
 
-      var activeCapacity = config.list[config.lastActiveIndex] -
-          config.list[config.firstActiveIndex];
-      return procantage * activeCapacity + config.list[config.firstActiveIndex];
+      var activeCapacity = config!.list[config!.lastActiveIndex] -
+          config!.list[config!.firstActiveIndex];
+      return procantage * activeCapacity + config!.list[config!.firstActiveIndex];
     };
 
     _min = disacitvatedTopPart + paddingTop;
@@ -89,7 +89,7 @@ class _SliderHandleState extends State<SliderHandle> {
 
   @override
   Widget build(BuildContext context) {
-    var centerY = dy - diameter / 2;
+    var centerY = dy! - diameter / 2;
     return Container(
       width: 100,
       child: Stack(
@@ -128,19 +128,19 @@ class _SliderHandleState extends State<SliderHandle> {
 
 class LinesPainter extends CustomPainter {
   LinesPainter(this.config, this.centerY);
-  final HumidityConfig config;
+  final HumidityConfig? config;
   final double centerY;
 
   @override
   void paint(Canvas canvas, Size size) {
     final width = size.width;
     final height = size.height;
-    final linesCount = (config.list.length - 1) * 5 + 1;
+    final linesCount = (config!.list.length - 1) * 5 + 1;
 
     final paddingTop =
-        config.paddingTopInPercentage * height / 100 + kNumberFontSize / 2;
+        config!.paddingTopInPercentage * height / 100 + kNumberFontSize / 2;
     final paddingBottom =
-        config.paddingBottomInPercentage * height / 100 + kNumberFontSize / 2;
+        config!.paddingBottomInPercentage * height / 100 + kNumberFontSize / 2;
 
     final oneLineStep =
         (height - paddingTop - paddingBottom) / (linesCount - 1);

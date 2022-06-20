@@ -92,9 +92,9 @@ class HumidityInfo extends StatelessWidget {
 }
 
 class AnimatedLetter extends StatefulWidget {
-  AnimatedLetter({Key key, this.letter}) : super(key: key);
+  AnimatedLetter({Key? key, this.letter}) : super(key: key);
 
-  final String letter;
+  final String? letter;
 
   @override
   _AnimatedLetterState createState() => _AnimatedLetterState();
@@ -102,10 +102,10 @@ class AnimatedLetter extends StatefulWidget {
 
 class _AnimatedLetterState extends State<AnimatedLetter>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
+  AnimationController? controller;
 
-  String currentLetter;
-  String prevLetter;
+  String? currentLetter;
+  String? prevLetter;
 
   @override
   void initState() {
@@ -124,7 +124,7 @@ class _AnimatedLetterState extends State<AnimatedLetter>
       setState(() {
         prevLetter = oldWidget.letter;
         currentLetter = widget.letter;
-        controller
+        controller!
           ..reset()
           ..forward();
       });
@@ -136,28 +136,28 @@ class _AnimatedLetterState extends State<AnimatedLetter>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: controller,
+        animation: controller!,
         builder: (_, __) {
           return Container(
             width: 48,
             child: Stack(
               children: [
                 Transform.translate(
-                  offset: Offset(0, -controller.value * 50),
+                  offset: Offset(0, -controller!.value * 50),
                   child: Opacity(
-                    opacity: 1 - controller.value,
+                    opacity: 1 - controller!.value,
                     child: Text(
-                      prevLetter,
+                      prevLetter!,
                       style: currentHumidityStyle,
                     ),
                   ),
                 ),
                 Transform.translate(
-                  offset: Offset(0, 50 - controller.value * 50),
+                  offset: Offset(0, 50 - controller!.value * 50),
                   child: Opacity(
-                    opacity: controller.value,
+                    opacity: controller!.value,
                     child: Text(
-                      currentLetter,
+                      currentLetter!,
                       style: currentHumidityStyle,
                     ),
                   ),
@@ -172,7 +172,7 @@ class _AnimatedLetterState extends State<AnimatedLetter>
 class _Subtitle extends StatelessWidget {
   const _Subtitle(
     this.text, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final String text;

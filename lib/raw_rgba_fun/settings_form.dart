@@ -4,18 +4,18 @@ import 'package:flutter_fun/raw_rgba_fun/settings.dart';
 import 'package:provider/provider.dart';
 
 class SettingsForm extends StatefulWidget {
-  const SettingsForm({Key key}) : super(key: key);
+  const SettingsForm({Key? key}) : super(key: key);
 
   @override
   _SettingsFormState createState() => _SettingsFormState();
 }
 
 class _SettingsFormState extends State<SettingsForm> {
-  TextEditingController _controller;
+  TextEditingController? _controller;
 
-  double _resolution;
-  double _size;
-  double _speed;
+  late double _resolution;
+  late double _size;
+  late double _speed;
 
   void initState() {
     var settings = context.read<Settings>();
@@ -28,7 +28,7 @@ class _SettingsFormState extends State<SettingsForm> {
   }
 
   void dispose() {
-    _controller.dispose();
+    _controller!.dispose();
     super.dispose();
   }
 
@@ -95,7 +95,7 @@ class _SettingsFormState extends State<SettingsForm> {
           value: value.toDouble(),
           onChanged: (value) =>
               setState(() => onChange(value.round().toDouble())),
-          onChangeEnd: setValue,
+          onChangeEnd: setValue as void Function(double)?,
         ),
       ],
     );

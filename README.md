@@ -3,7 +3,8 @@
 Just small ui challenges for Fun.
 
 ## Glitch effect experiment
-![](gifs/glitch.gif)  
+
+![](gifs/glitch.gif)
 
 ## IoT Humidity App Slider
 
@@ -13,7 +14,9 @@ Result:
 ![](gifs/humidity_app_res.gif)
 
 ## Fun with ImageData
-![](gifs/fun_with_image_data.gif)  
+
+![](gifs/fun_with_image_data.gif)
 
 ## iPhone’s Today View (IOS 13)
+
 ![](gifs/today_list.gif)
