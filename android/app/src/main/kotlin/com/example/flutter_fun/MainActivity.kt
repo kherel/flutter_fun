@@ -1,4 +1,4 @@
-package dev.kherel.flutter_fun
+package com.example.flutter_fun
 
 import io.flutter.embedding.android.FlutterActivity
 
