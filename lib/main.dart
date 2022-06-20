@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fun/glitch/glitch_page_screen.dart';
 import 'package:flutter_fun/raw_rgba_fun/raw_rgba_screen.dart';
@@ -31,25 +30,25 @@ class Home extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          RaisedButton(
+          ElevatedButton(
             child: Text('Glitch effect'),
             onPressed: () => Navigator.of(context).push(
               noAnimationRoute(GlitchPageScreen()),
             ),
           ),
-          RaisedButton(
+          ElevatedButton(
             child: Text('HumiditySlider'),
             onPressed: () => Navigator.of(context).push(
               noAnimationRoute(HumidityScreen()),
             ),
           ),
-          RaisedButton(
+          ElevatedButton(
             child: Text('ImageAnimationScreen'),
             onPressed: () => Navigator.of(context).push(
               noAnimationRoute(RawRgbaAnimationScreen()),
             ),
           ),
-          RaisedButton(
+          ElevatedButton(
             child: Text('IOS 13 Today List'),
             onPressed: () => Navigator.of(context).push(
               noAnimationRoute(TodayListScreen()),

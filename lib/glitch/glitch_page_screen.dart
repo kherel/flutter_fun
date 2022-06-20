@@ -67,14 +67,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SizedBox(height: 50),
             GlithEffect(
-              child: RaisedButton(
-                textColor: Colors.white,
-                color: Colors.black,
+              child: ElevatedButton(
                 child: Icon(Icons.add),
                 onPressed: _incrementCounter,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
+                //   RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.circular(30.0),
+                // ),
               ),
             ),
           ],
