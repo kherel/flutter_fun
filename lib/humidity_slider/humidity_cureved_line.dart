@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fun/humidity_slider/theme.dart';
 
 class HumidityCurevedLine extends StatelessWidget {
-  const HumidityCurevedLine({Key key, this.y}) : super(key: key);
+  const HumidityCurevedLine({Key? key, this.y}) : super(key: key);
 
-  final double y;
+  final double? y;
   @override
   Widget build(BuildContext context) {
     return ClipPath(
@@ -44,13 +44,13 @@ class HumidityCurevedLine extends StatelessWidget {
 class _MovingCurvedCliper extends CustomClipper<Path> {
   _MovingCurvedCliper(this.centerY);
 
-  final double centerY;
+  final double? centerY;
 
   @override
   Path getClip(Size size) {
     var unit = size.height / 100;
 
-    var deltaY = -(52 - centerY / unit) * unit;
+    var deltaY = -(52 - centerY! / unit) * unit;
     return Path()
       ..moveTo(unit * 4.49826, unit * 45.4994 + deltaY)
       ..lineTo(unit * 4.49826, 0.0)

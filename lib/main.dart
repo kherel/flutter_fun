@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 
 class Home extends StatelessWidget {
   const Home({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

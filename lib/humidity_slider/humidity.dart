@@ -8,11 +8,11 @@ class Humidity with ChangeNotifier {
 
   final int _defaultValue = 37;
 
-  double _transitionalValue;
-  double get transitionalValue => _transitionalValue;
+  double? _transitionalValue;
+  double? get transitionalValue => _transitionalValue;
 
-  int _finalValue;
-  int get finalValue => _finalValue;
+  int? _finalValue;
+  int? get finalValue => _finalValue;
 
   void updateTrasitionalValue(double newValue) {
     _transitionalValue = newValue;
@@ -20,7 +20,7 @@ class Humidity with ChangeNotifier {
   }
 
   void updateFinalValue() {
-    _finalValue = _transitionalValue.round();
+    _finalValue = _transitionalValue!.round();
     notifyListeners();
   }
 }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class HeaderIcon extends StatelessWidget {
   const HeaderIcon({
-    Key key,
-    @required this.gradient,
-    @required this.iconData,
+    Key? key,
+    required this.gradient,
+    required this.iconData,
   })  : assert(iconData != null),
         assert(gradient != null),
         super(key: key);

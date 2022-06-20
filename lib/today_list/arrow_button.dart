@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 class ArrowButton extends StatefulWidget {
   ArrowButton({
-    Key key,
-    @required this.onTap,
-    @required this.isExpanded,
+    Key? key,
+    required this.onTap,
+    required this.isExpanded,
   })  : assert(onTap != null),
         assert(isExpanded != null),
         super(key: key);
@@ -21,8 +21,8 @@ class ArrowButton extends StatefulWidget {
 
 class _ArrowButtonState extends State<ArrowButton>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> _animation;
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
   @override
   void dispose() {

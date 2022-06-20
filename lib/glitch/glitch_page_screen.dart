@@ -17,9 +17,9 @@ class GlitchPageScreen extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: GlithEffect(child: Text(widget.title)),
+        title: GlithEffect(child: Text(widget.title!)),
       ),
       body: Center(
         child: Column(
@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
             GlithEffect(
               child: Text(
                 '$_counter',
-                style: Theme.of(context).textTheme.headline4.copyWith(
+                style: Theme.of(context).textTheme.headline4!.copyWith(
                       fontSize: 60,
                     ),
               ),

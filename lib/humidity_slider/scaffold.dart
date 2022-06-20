@@ -7,12 +7,12 @@ import 'package:flutter_fun/utils/navigation.dart';
 
 class HSScaffold extends StatelessWidget {
   const HSScaffold({
-    Key key,
+    Key? key,
     this.body,
-    @required this.activeIndex,
+    required this.activeIndex,
   }) : super(key: key);
 
-  final Widget body;
+  final Widget? body;
   final int activeIndex;
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class HSScaffold extends StatelessWidget {
         body: SafeArea(
           child: Stack(
             children: [
-              body,
+              body!,
               Align(
                 alignment: Alignment.topRight,
                 child: Padding(
@@ -102,9 +102,9 @@ class HSScaffold extends StatelessWidget {
 
 class _MockPage extends StatelessWidget {
   const _MockPage({
-    Key key,
-    @required this.iconData,
-    @required this.activeIndex,
+    Key? key,
+    required this.iconData,
+    required this.activeIndex,
   }) : super(key: key);
 
   final IconData iconData;

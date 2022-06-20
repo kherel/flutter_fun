@@ -8,7 +8,7 @@ import 'scaffold.dart';
 import 'slider.dart';
 
 class HumidityScreen extends StatelessWidget {
-  const HumidityScreen({Key key}) : super(key: key);
+  const HumidityScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class HumidityScreen extends StatelessWidget {
 }
 
 class HumiditySliderPage extends StatelessWidget {
-  const HumiditySliderPage({Key key}) : super(key: key);
+  const HumiditySliderPage({Key? key}) : super(key: key);
 
   final bool kShowBack = false;
 

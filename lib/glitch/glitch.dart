@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fun/utils/colors.dart';
 
 class GlithEffect extends StatefulWidget {
-  const GlithEffect({Key key, this.child}) : super(key: key);
+  const GlithEffect({Key? key, this.child}) : super(key: key);
 
-  final Widget child;
+  final Widget? child;
 
   @override
   _GlithEffectState createState() => _GlithEffectState();
@@ -15,8 +15,8 @@ class GlithEffect extends StatefulWidget {
 
 class _GlithEffectState extends State<GlithEffect>
     with SingleTickerProviderStateMixin {
-  GlitchController _controller;
-  Timer _timer;
+  GlitchController? _controller;
+  late Timer _timer;
 
   @override
   void initState() {
@@ -41,17 +41,17 @@ class _GlithEffectState extends State<GlithEffect>
   void dispose() {
     super.dispose();
     _timer.cancel();
-    _controller.dispose();
+    _controller!.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: _controller,
+        animation: _controller!,
         builder: (_, __) {
           var color = getRandomColor().withOpacity(0.5);
-          if (!_controller.isAnimating) {
-            return widget.child;
+          if (!_controller!.isAnimating) {
+            return widget.child!;
           }
           return Stack(
             children: [
@@ -123,20 +123,20 @@ class GlitchClipper extends CustomClipper<Path> {
   bool shouldReclip(covariant CustomClipper oldClipper) => true;
 }
 
-class GlitchController extends Animation<int>
+class GlitchController extends Animation<int?>
     with
         AnimationEagerListenerMixin,
         AnimationLocalListenersMixin,
         AnimationLocalStatusListenersMixin {
   GlitchController({this.duration});
 
-  Duration duration;
+  Duration? duration;
   List<Timer> _timers = [];
   bool isAnimating = false;
 
   forward() {
     isAnimating = true;
-    var oneStep = (duration.inMicroseconds / 3).round();
+    var oneStep = (duration!.inMicroseconds / 3).round();
     _status = AnimationStatus.forward;
     _timers = [
       Timer(
@@ -180,9 +180,9 @@ class GlitchController extends Animation<int>
 
   @override
   AnimationStatus get status => _status;
-  AnimationStatus _status;
+  late AnimationStatus _status;
 
   @override
-  int get value => _value;
-  int _value;
+  int? get value => _value;
+  int? _value;
 }

@@ -8,7 +8,7 @@ import 'package:flutter_fun/raw_rgba_fun/settings.dart';
 import 'package:provider/provider.dart';
 
 class AnimatedPoints extends StatefulWidget {
-  AnimatedPoints({Key key}) : super(key: key);
+  AnimatedPoints({Key? key}) : super(key: key);
 
   @override
   _AnimatedPointsState createState() => _AnimatedPointsState();
@@ -16,7 +16,7 @@ class AnimatedPoints extends StatefulWidget {
 
 class _AnimatedPointsState extends State<AnimatedPoints>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
+  late AnimationController controller;
   @override
   void initState() {
     controller = AnimationController(
@@ -62,14 +62,14 @@ class PointsPainter extends CustomPainter {
     this.settings,
   );
 
-  final List<Point> points;
+  final List<Point>? points;
   final double animationValue;
   final Settings settings;
 
   @override
   void paint(ui.Canvas canvas, ui.Size size) {
     var paint = Paint()..style = PaintingStyle.fill;
-    for (var point in points) {
+    for (var point in points!) {
       paint.color = point.color;
       // print(point.startDelay);
       if (animationValue >= point.startDelay) {
