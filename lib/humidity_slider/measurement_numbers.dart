@@ -9,16 +9,16 @@ class MeasurementNumbers extends StatefulWidget {
   MeasurementNumbers(this.oneUnit, this.value);
 
   final double oneUnit;
-  final double value;
+  final double? value;
 
   @override
   _MeasurementNumbersState createState() => _MeasurementNumbersState();
 }
 
 class _MeasurementNumbersState extends State<MeasurementNumbers> {
-  int activeIndex;
+  int? activeIndex;
 
-  HumidityConfig config;
+  late HumidityConfig config;
   @override
   void initState() {
     super.initState();
@@ -29,17 +29,17 @@ class _MeasurementNumbersState extends State<MeasurementNumbers> {
     activeIndex = findNearestIndex(initValue);
   }
 
-  int findNearestIndex(double value) {
+  int findNearestIndex(double? value) {
     var a = [...config.list.reversed]
-      ..sort((a, b) => (a - value).abs().compareTo((b - value).abs()));
+      ..sort((a, b) => (a - value!).abs().compareTo((b - value).abs()));
     return config.list.length - config.list.indexOf(a.first) - 1;
   }
 
   @override
   void didUpdateWidget(MeasurementNumbers oldWidget) {
-    var oldActiveValue = config.list.reversed.toList()[activeIndex];
+    var oldActiveValue = config.list.reversed.toList()[activeIndex!];
 
-    var delta = (widget.value - oldActiveValue).abs().round();
+    var delta = (widget.value! - oldActiveValue).abs().round();
 
     if (delta >= 5) {
       activeIndex = findNearestIndex(widget.value);
@@ -49,7 +49,7 @@ class _MeasurementNumbersState extends State<MeasurementNumbers> {
 
   @override
   Widget build(BuildContext context) {
-    var value = context.watch<Humidity>().transitionalValue;
+    var value = context.watch<Humidity>().transitionalValue!;
 
     var list = config.list;
     var firstIndex = config.firstActiveIndex;
@@ -111,17 +111,17 @@ class _MeasurementNumbersState extends State<MeasurementNumbers> {
 
 class AnimatedText extends StatefulWidget {
   AnimatedText({
-    Key key,
+    Key? key,
     this.notActiveNumber,
     this.activeValue,
     this.isActive,
     this.oneUnit,
   }) : super(key: key);
 
-  final int notActiveNumber;
-  final double activeValue;
-  final double oneUnit;
-  final bool isActive;
+  final int? notActiveNumber;
+  final double? activeValue;
+  final double? oneUnit;
+  final bool? isActive;
 
   @override
   _AnimatedTextState createState() => _AnimatedTextState();
@@ -129,8 +129,8 @@ class AnimatedText extends StatefulWidget {
 
 class _AnimatedTextState extends State<AnimatedText>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Tween<Color> colorTween;
+  AnimationController? controller;
+  late Tween<Color?> colorTween;
 
   @override
   void initState() {
@@ -143,21 +143,21 @@ class _AnimatedTextState extends State<AnimatedText>
       begin: BrandColors.sugarCane,
       end: BrandColors.cerulean,
     );
-    if (widget.isActive) {
-      controller.forward();
+    if (widget.isActive!) {
+      controller!.forward();
     }
     super.initState();
   }
 
-  bool isGoingUp;
+  late bool isGoingUp;
 
   @override
   void didUpdateWidget(AnimatedText oldWidget) {
-    if (widget.isActive && !oldWidget.isActive) {
-      controller..forward();
-    } else if (!widget.isActive && oldWidget.isActive) {
-      isGoingUp = widget.activeValue > widget.notActiveNumber;
-      controller..reverse();
+    if (widget.isActive! && !oldWidget.isActive!) {
+      controller!..forward();
+    } else if (!widget.isActive! && oldWidget.isActive!) {
+      isGoingUp = widget.activeValue! > widget.notActiveNumber!;
+      controller!..reverse();
     }
 
     super.didUpdateWidget(oldWidget);
@@ -166,24 +166,24 @@ class _AnimatedTextState extends State<AnimatedText>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: controller,
+        animation: controller!,
         builder: (_, __) {
           String text;
           Offset offset;
 
-          if (controller.isAnimating &&
-              controller.status == AnimationStatus.reverse) {
-            var number = widget.notActiveNumber +
-                (controller.value.round() * 5 * (isGoingUp ? -1 : 1));
+          if (controller!.isAnimating &&
+              controller!.status == AnimationStatus.reverse) {
+            var number = widget.notActiveNumber! +
+                (controller!.value.round() * 5 * (isGoingUp ? -1 : 1));
             text = ' $number%';
             var dy =
-                controller.value * 5 * (isGoingUp ? -1 : 1) * widget.oneUnit;
+                controller!.value * 5 * (isGoingUp ? -1 : 1) * widget.oneUnit!;
             offset = Offset(0, dy);
           } else {
-            if (widget.isActive) {
-              text = ' ${widget.activeValue.round()}%';
-              var dy = (widget.notActiveNumber - widget.activeValue) *
-                  widget.oneUnit;
+            if (widget.isActive!) {
+              text = ' ${widget.activeValue!.round()}%';
+              var dy = (widget.notActiveNumber! - widget.activeValue!) *
+                  widget.oneUnit!;
               offset = Offset(0, dy);
             } else {
               text = ' ${widget.notActiveNumber}%';
@@ -193,7 +193,7 @@ class _AnimatedTextState extends State<AnimatedText>
 
           return Transform.scale(
             alignment: Alignment.centerLeft,
-            scale: 1 + (0.4 * controller.value),
+            scale: 1 + (0.4 * controller!.value),
             child: Transform.translate(
               offset: offset,
               child: Text(
@@ -202,7 +202,7 @@ class _AnimatedTextState extends State<AnimatedText>
                   fontSize: kNumberFontSize,
                   fontWeight: FontWeight.w900,
                   height: 1,
-                  color: colorTween.evaluate(controller),
+                  color: colorTween.evaluate(controller!),
                 ),
               ),
             ),

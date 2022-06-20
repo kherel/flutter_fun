@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fun/raw_rgba_fun/settings.dart';
 
 class PointNotifier with ChangeNotifier {
-  List<Point> _points;
+  List<Point>? _points;
   bool _isReady = false;
 
-  List<Point> get points => _points;
+  List<Point>? get points => _points;
   bool get isReady => _isReady;
 
   void setPoints(List<Point> points) => _points = points;

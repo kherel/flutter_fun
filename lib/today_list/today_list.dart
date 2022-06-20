@@ -10,7 +10,7 @@ import 'header_icon.dart';
 import 'search.dart';
 
 class TodayListScreen extends StatelessWidget {
-  const TodayListScreen({Key key}) : super(key: key);
+  const TodayListScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class TodayListScreen extends StatelessWidget {
 }
 
 class TodayList extends StatelessWidget {
-  const TodayList({Key key}) : super(key: key);
+  const TodayList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -146,10 +146,10 @@ class TodayList extends StatelessWidget {
 
 class TodayListTile extends StatefulWidget {
   const TodayListTile({
-    Key key,
-    @required this.title,
-    @required this.icon,
-    @required this.main,
+    Key? key,
+    required this.title,
+    required this.icon,
+    required this.main,
     this.extra,
   })  : assert(main != null),
         assert(title != null),
@@ -159,7 +159,7 @@ class TodayListTile extends StatefulWidget {
   final String title;
   final HeaderIcon icon;
   final Widget main;
-  final Widget extra;
+  final Widget? extra;
 
   @override
   _TodayListTileState createState() => _TodayListTileState();
@@ -168,8 +168,8 @@ class TodayListTile extends StatefulWidget {
 class _TodayListTileState extends State<TodayListTile> {
   double maxExtend = 200;
 
-  double extraHeight;
-  double mainHeight;
+  late double extraHeight;
+  late double mainHeight;
 
   final GlobalKey mainKey = GlobalKey();
   final GlobalKey extraKey = GlobalKey();
@@ -181,9 +181,9 @@ class _TodayListTileState extends State<TodayListTile> {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => setState(
         () {
-          mainHeight = mainKey.currentContext.size.height;
+          mainHeight = mainKey.currentContext!.size!.height;
           if (widget.extra != null) {
-            extraHeight = extraKey.currentContext.size.height;
+            extraHeight = extraKey.currentContext!.size!.height;
           }
           maxExtend = mainHeight + 45;
         },
@@ -213,21 +213,21 @@ class _TodayListTileState extends State<TodayListTile> {
 }
 
 class _TodayListTileDelegate extends SliverPersistentHeaderDelegate {
-  final TodayListTile widget;
-  final void Function(bool isOpen) setMaxExtend;
+  final TodayListTile? widget;
+  final void Function(bool isOpen)? setMaxExtend;
 
   _TodayListTileDelegate({
     this.widget,
-    this.maxExtent,
+    required this.maxExtent,
     this.setMaxExtend,
     this.mainKey,
     this.extraKey,
     this.isOpen,
   });
 
-  final Key mainKey;
-  final Key extraKey;
-  final bool isOpen;
+  final Key? mainKey;
+  final Key? extraKey;
+  final bool? isOpen;
 
   @override
   Widget build(context, shrinkOffset, overlapsContent) {
@@ -261,12 +261,12 @@ class _TodayListTileDelegate extends SliverPersistentHeaderDelegate {
                       tileHeader(),
                       Container(
                         key: mainKey,
-                        child: widget.main,
+                        child: widget!.main,
                       ),
-                      if (widget.extra != null)
+                      if (widget!.extra != null)
                         Container(
                           key: extraKey,
-                          child: widget.extra,
+                          child: widget!.extra,
                         )
                     ],
                   ),
@@ -299,10 +299,10 @@ class _TodayListTileDelegate extends SliverPersistentHeaderDelegate {
       padding: EdgeInsets.all(8),
       child: Row(
         children: [
-          widget.icon,
+          widget!.icon,
           SizedBox(width: 10),
           Text(
-            widget.title,
+            widget!.title,
             style: TextStyle(
               color: Colors.white30,
               fontWeight: FontWeight.w500,
@@ -310,10 +310,10 @@ class _TodayListTileDelegate extends SliverPersistentHeaderDelegate {
             ),
           ),
           Spacer(),
-          if (widget.extra != null)
+          if (widget!.extra != null)
             ArrowButton(
-              onTap: setMaxExtend,
-              isExpanded: isOpen,
+              onTap: setMaxExtend!,
+              isExpanded: isOpen!,
             ),
         ],
       ),
@@ -332,8 +332,8 @@ class _TodayListTileDelegate extends SliverPersistentHeaderDelegate {
 
 class _BrandTable extends StatelessWidget {
   const _BrandTable({
-    Key key,
-    @required this.list,
+    Key? key,
+    required this.list,
   }) : super(key: key);
 
   final List<_TableRowData> list;
@@ -350,7 +350,7 @@ class _BrandTable extends StatelessWidget {
           2: FlexColumnWidth(0.5),
         },
         children: list
-            .map((d) => buildRow(d.text, d.color, d.count, d.hasPoint))
+            .map((d) => buildRow(d.text!, d.color, d.count, d.hasPoint!))
             .toList(),
       ),
     );
@@ -358,8 +358,8 @@ class _BrandTable extends StatelessWidget {
 
   TableRow buildRow(
     String text,
-    Color color,
-    int count,
+    Color? color,
+    int? count,
     bool hasPoint,
   ) {
     return TableRow(
@@ -392,8 +392,8 @@ class _BrandTable extends StatelessWidget {
 class _TableRowData {
   _TableRowData({this.text, this.color, this.count, this.hasPoint});
 
-  final String text;
-  final Color color;
-  final int count;
-  final bool hasPoint;
+  final String? text;
+  final Color? color;
+  final int? count;
+  final bool? hasPoint;
 }
