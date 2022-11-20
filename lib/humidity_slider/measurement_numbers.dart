@@ -6,13 +6,17 @@ import 'humidity.dart';
 import 'humidity_congfig.dart';
 
 class MeasurementNumbers extends StatefulWidget {
-  MeasurementNumbers(this.oneUnit, this.value);
+  const MeasurementNumbers(
+    this.oneUnit,
+    this.value, {
+    super.key,
+  });
 
   final double oneUnit;
   final double? value;
 
   @override
-  _MeasurementNumbersState createState() => _MeasurementNumbersState();
+  State<MeasurementNumbers> createState() => _MeasurementNumbersState();
 }
 
 class _MeasurementNumbersState extends State<MeasurementNumbers> {
@@ -58,7 +62,7 @@ class _MeasurementNumbersState extends State<MeasurementNumbers> {
     var paddingBottom = config.paddingBottomInPercentage * widget.oneUnit;
 
     return Container(
-      padding: EdgeInsets.only(left: 10),
+      padding: const EdgeInsets.only(left: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -110,13 +114,13 @@ class _MeasurementNumbersState extends State<MeasurementNumbers> {
 }
 
 class AnimatedText extends StatefulWidget {
-  AnimatedText({
-    Key? key,
+  const AnimatedText({
+    super.key,
     this.notActiveNumber,
     this.activeValue,
     this.isActive,
     this.oneUnit,
-  }) : super(key: key);
+  });
 
   final int? notActiveNumber;
   final double? activeValue;
@@ -124,7 +128,7 @@ class AnimatedText extends StatefulWidget {
   final bool? isActive;
 
   @override
-  _AnimatedTextState createState() => _AnimatedTextState();
+  State<AnimatedText> createState() => _AnimatedTextState();
 }
 
 class _AnimatedTextState extends State<AnimatedText>
@@ -154,10 +158,10 @@ class _AnimatedTextState extends State<AnimatedText>
   @override
   void didUpdateWidget(AnimatedText oldWidget) {
     if (widget.isActive! && !oldWidget.isActive!) {
-      controller!..forward();
+      controller!.forward();
     } else if (!widget.isActive! && oldWidget.isActive!) {
       isGoingUp = widget.activeValue! > widget.notActiveNumber!;
-      controller!..reverse();
+      controller!.reverse();
     }
 
     super.didUpdateWidget(oldWidget);

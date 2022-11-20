@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'glitch.dart';
 
 class GlitchPageScreen extends StatelessWidget {
+  const GlitchPageScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,18 +13,16 @@ class GlitchPageScreen extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
-
-  final String? title;
+  const MyHomePage({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -38,21 +38,25 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: GlithEffect(child: Text(widget.title!)),
+        title: const GlithEffect(
+          child: Text(
+            'Flutter Demo Home Page',
+          ),
+        ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 100),
+            const SizedBox(height: 100),
             GlithEffect(
               child: Image.asset(
                 'assets/kherel.jpeg',
                 width: 150,
               ),
             ),
-            SizedBox(height: 100),
-            GlithEffect(
+            const SizedBox(height: 100),
+            const GlithEffect(
               child: Text(
                 'You have pushed the button this many times:',
               ),
@@ -65,14 +69,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
               ),
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             GlithEffect(
               child: ElevatedButton(
-                child: Icon(Icons.add),
                 onPressed: _incrementCounter,
-                //   RoundedRectangleBorder(
-                //   borderRadius: BorderRadius.circular(30.0),
-                // ),
+                child: const Icon(Icons.add),
               ),
             ),
           ],

@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 
 class HeaderIcon extends StatelessWidget {
   const HeaderIcon({
-    Key? key,
+    super.key,
     required this.gradient,
     required this.iconData,
-  })  : assert(iconData != null),
-        assert(gradient != null),
-        super(key: key);
+  });
 
   final IconData iconData;
   final Gradient gradient;
@@ -16,9 +14,7 @@ class HeaderIcon extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(5),
       child: Container(
-        decoration: BoxDecoration(
-          gradient: gradient
-        ),
+        decoration: BoxDecoration(gradient: gradient),
         height: 23,
         width: 23,
         child: Icon(

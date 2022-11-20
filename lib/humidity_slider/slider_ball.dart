@@ -9,14 +9,14 @@ class SliderBall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: BrandColors.sugarCane,
       ),
       height: kBallSize,
       width: kBallSize,
       alignment: Alignment.center,
-      child: Icon(
+      child: const Icon(
         FunIcons.verticalArrows,
         color: BrandColors.fiord,
         size: 20,

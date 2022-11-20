@@ -33,9 +33,7 @@ class HSScaffold extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 15, top: 3),
                   child: IconButton(
                     iconSize: 44,
-                    icon: Icon(
-                      Icons.more_horiz,
-                    ),
+                    icon: const Icon(Icons.more_horiz),
                     onPressed: () => print('menu'),
                   ),
                 ),
@@ -43,14 +41,14 @@ class HSScaffold extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       _buildButton(
                         context,
                         FunIcons.chart,
-                        _MockPage(
+                        const _MockPage(
                           iconData: FunIcons.chart,
                           activeIndex: 0,
                         ),
@@ -59,13 +57,13 @@ class HSScaffold extends StatelessWidget {
                       _buildButton(
                         context,
                         FunIcons.drop,
-                        HumidityScreen(),
+                        const HumidityScreen(),
                         isActive: activeIndex == 1,
                       ),
                       _buildButton(
                         context,
                         FunIcons.home,
-                        _MockPage(
+                        const _MockPage(
                           iconData: FunIcons.home,
                           activeIndex: 2,
                         ),

@@ -18,7 +18,7 @@ var humiditySliderTheme = ThemeData.dark().copyWith(
   ),
 );
 
-var currentHumidityStyle = TextStyle(
+var currentHumidityStyle = const TextStyle(
   fontSize: 80,
   fontWeight: FontWeight.bold,
 );

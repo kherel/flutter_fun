@@ -13,8 +13,8 @@ class HumidityCurevedLine extends StatelessWidget {
         width: 41,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              begin: Alignment(0, -1),
-              end: Alignment(0, 1),
+              begin: const Alignment(0, -1),
+              end: const Alignment(0, 1),
               colors: [
                 BrandColors.background,
                 BrandColors.redViolet,
@@ -25,7 +25,7 @@ class HumidityCurevedLine extends StatelessWidget {
                 BrandColors.redViolet,
                 BrandColors.background,
               ],
-              stops: [
+              stops: const [
                 0.01,
                 0.1,
                 0.25,

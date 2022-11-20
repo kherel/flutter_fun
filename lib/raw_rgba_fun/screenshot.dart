@@ -9,7 +9,7 @@ import 'package:flutter_fun/raw_rgba_fun/settings.dart';
 import 'package:provider/provider.dart';
 
 class ScreenShot extends StatefulWidget {
-  ScreenShot({
+  const ScreenShot({
     Key? key,
     this.size,
     this.speed,
@@ -23,7 +23,7 @@ class ScreenShot extends StatefulWidget {
   final String? text;
 
   @override
-  _ScreenShotState createState() => _ScreenShotState();
+  State<ScreenShot> createState() => _ScreenShotState();
 }
 
 class _ScreenShotState extends State<ScreenShot> {
@@ -35,16 +35,17 @@ class _ScreenShotState extends State<ScreenShot> {
   }
 
   _setArray() async {
-    Future.delayed(Duration(milliseconds: 100), () async {
+    var notifier = context.read<PointNotifier>();
+    Future.delayed(const Duration(milliseconds: 100), () async {
       try {
-        RenderRepaintBoundary boundary =
-            _globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+        RenderRepaintBoundary boundary = _globalKey.currentContext!
+            .findRenderObject() as RenderRepaintBoundary;
         var image = await boundary.toImage(pixelRatio: 1);
         var width = image.width;
         var height = image.height;
 
-        var byteData =
-            await (image.toByteData(format: ui.ImageByteFormat.rawRgba) as FutureOr<ByteData>);
+        var byteData = await (image.toByteData(
+            format: ui.ImageByteFormat.rawRgba) as FutureOr<ByteData>);
         var pngBytes = byteData.buffer.asUint8List();
         var points = <Point>[];
 
@@ -68,8 +69,9 @@ class _ScreenShotState extends State<ScreenShot> {
             }
           }
         }
-        context.read<PointNotifier>().setPoints(points);
-        context.read<PointNotifier>().setIsReady(true);
+        notifier
+          ..setPoints(points)
+          ..setIsReady(true);
       } catch (e) {
         print(e);
       }
@@ -94,19 +96,19 @@ class _ScreenShotState extends State<ScreenShot> {
   Widget build(BuildContext context) {
     return RepaintBoundary(
       key: _globalKey,
-      child: Container(
+      child: SizedBox(
         height: 300,
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FlutterLogo(
+            const FlutterLogo(
               size: 150,
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Text(
               context.watch<Settings>().text,
-              style: TextStyle(fontSize: 55),
+              style: const TextStyle(fontSize: 55),
             ),
           ],
         ),

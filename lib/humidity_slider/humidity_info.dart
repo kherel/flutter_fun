@@ -6,98 +6,98 @@ import 'package:provider/provider.dart';
 import 'humidity.dart';
 
 class HumidityInfo extends StatelessWidget {
+  const HumidityInfo({super.key});
+
   @override
   Widget build(BuildContext context) {
     var value = context.watch<Humidity>().finalValue;
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Spacer(flex: 2),
-          Container(
-            height: 470,
-            alignment: Alignment.topLeft,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _Subtitle('Return temperature'),
-                SizedBox(height: 10),
-                Text(
-                  '20℃',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Spacer(flex: 2),
+        Container(
+          height: 470,
+          alignment: Alignment.topLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const _Subtitle('Return temperature'),
+              const Spacer(flex: 10),
+              const Text(
+                '20℃',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
                 ),
-                SizedBox(height: 50),
-                _Subtitle('Current humidity'),
-                SizedBox(height: 10),
-                Row(
-                  children: [
-                    AnimatedLetter(
-                      letter: value.toString()[0],
+              ),
+              const Spacer(flex: 50),
+              const _Subtitle('Current humidity'),
+              const Spacer(flex: 10),
+              Row(
+                children: [
+                  AnimatedLetter(
+                    letter: value.toString()[0],
+                  ),
+                  AnimatedLetter(
+                    letter: value.toString()[1],
+                  ),
+                  SizedBox(
+                    child: Text('%', style: currentHumidityStyle),
+                  )
+                ],
+              ),
+              const Spacer(flex: 40),
+              const _Subtitle('Absolute humidity'),
+              const Spacer(flex: 12),
+              const Text(
+                '4gr/fg3',
+                style: TextStyle(
+                  fontSize: 27,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const Spacer(flex: 42),
+              Icon(
+                FunIcons.warningSign,
+                color: BrandColors.attention,
+              ),
+              const Spacer(flex: 10),
+              RichText(
+                text: TextSpan(
+                  children: <InlineSpan>[
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: Icon(
+                        Icons.brightness_1,
+                        size: 8,
+                        color: BrandColors.attention,
+                      ),
                     ),
-                    AnimatedLetter(
-                      letter: value.toString()[1],
+                    const TextSpan(
+                      style: TextStyle(height: 1.3),
+                      text:
+                          ' — extreme humidity level. \n Use precaution for set-points \n outside of 20%-50%',
                     ),
-                    SizedBox(
-                      child: Text('%', style: currentHumidityStyle),
-                    )
                   ],
                 ),
-                SizedBox(height: 40),
-                _Subtitle('Absolute humidity'),
-                SizedBox(height: 12),
-                Text(
-                  '4gr/fg3',
-                  style: TextStyle(
-                    fontSize: 27,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 42),
-                Icon(
-                  FunIcons.warningSign,
-                  color: BrandColors.attention,
-                ),
-                SizedBox(height: 10),
-                RichText(
-                  text: TextSpan(
-                    children: <InlineSpan>[
-                      WidgetSpan(
-                        alignment: PlaceholderAlignment.middle,
-                        child: Icon(
-                          Icons.brightness_1,
-                          size: 8,
-                          color: BrandColors.attention,
-                        ),
-                      ),
-                      TextSpan(
-                        style: TextStyle(height: 1.3),
-                        text:
-                            ' — extreme humidity level. \n Use precaution for set-points \n outside of 20%-50%',
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
-          Spacer(flex: 1),
-        ],
-      ),
+        ),
+        const Spacer(flex: 1),
+      ],
     );
   }
 }
 
 class AnimatedLetter extends StatefulWidget {
-  AnimatedLetter({Key? key, this.letter}) : super(key: key);
+  const AnimatedLetter({super.key, this.letter});
 
   final String? letter;
 
   @override
-  _AnimatedLetterState createState() => _AnimatedLetterState();
+  State<AnimatedLetter> createState() => _AnimatedLetterState();
 }
 
 class _AnimatedLetterState extends State<AnimatedLetter>
@@ -138,7 +138,7 @@ class _AnimatedLetterState extends State<AnimatedLetter>
     return AnimatedBuilder(
         animation: controller!,
         builder: (_, __) {
-          return Container(
+          return SizedBox(
             width: 48,
             child: Stack(
               children: [

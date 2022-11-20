@@ -6,13 +6,15 @@ import 'humidity_slider/humidity_screen.dart';
 import 'today_list/today_list.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Fun',
       home: Home(),
     );
@@ -31,27 +33,27 @@ class Home extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton(
-            child: Text('Glitch effect'),
+            child: const Text('Glitch effect'),
             onPressed: () => Navigator.of(context).push(
-              noAnimationRoute(GlitchPageScreen()),
+              noAnimationRoute(const GlitchPageScreen()),
             ),
           ),
           ElevatedButton(
-            child: Text('HumiditySlider'),
+            child: const Text('HumiditySlider'),
             onPressed: () => Navigator.of(context).push(
-              noAnimationRoute(HumidityScreen()),
+              noAnimationRoute(const HumidityScreen()),
             ),
           ),
           ElevatedButton(
-            child: Text('ImageAnimationScreen'),
+            child: const Text('ImageAnimationScreen'),
             onPressed: () => Navigator.of(context).push(
-              noAnimationRoute(RawRgbaAnimationScreen()),
+              noAnimationRoute(const RawRgbaAnimationScreen()),
             ),
           ),
           ElevatedButton(
-            child: Text('IOS 13 Today List'),
+            child: const Text('IOS 13 Today List'),
             onPressed: () => Navigator.of(context).push(
-              noAnimationRoute(TodayListScreen()),
+              noAnimationRoute(const TodayListScreen()),
             ),
           ),
         ],

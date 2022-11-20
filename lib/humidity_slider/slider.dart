@@ -11,6 +11,9 @@ import 'measurement_numbers.dart';
 import 'theme.dart';
 
 class HumiditySlider extends StatelessWidget {
+  const HumiditySlider({super.key});
+
+  @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraintes) {
       var maxHeight = constraintes.maxHeight;
@@ -24,10 +27,14 @@ class HumiditySlider extends StatelessWidget {
 }
 
 class SliderHandle extends StatefulWidget {
-  SliderHandle(this.oneUnit, {Key? key}) : super(key: key);
+  const SliderHandle(
+    this.oneUnit, {
+    super.key,
+  });
   final double oneUnit;
+
   @override
-  _SliderHandleState createState() => _SliderHandleState();
+  State<SliderHandle> createState() => _SliderHandleState();
 }
 
 class _SliderHandleState extends State<SliderHandle> {
@@ -80,7 +87,8 @@ class _SliderHandleState extends State<SliderHandle> {
 
       var activeCapacity = config!.list[config!.lastActiveIndex] -
           config!.list[config!.firstActiveIndex];
-      return procantage * activeCapacity + config!.list[config!.firstActiveIndex];
+      return procantage * activeCapacity +
+          config!.list[config!.firstActiveIndex];
     };
 
     _min = disacitvatedTopPart + paddingTop;
@@ -90,7 +98,7 @@ class _SliderHandleState extends State<SliderHandle> {
   @override
   Widget build(BuildContext context) {
     var centerY = dy! - diameter / 2;
-    return Container(
+    return SizedBox(
       width: 100,
       child: Stack(
         fit: StackFit.passthrough,
@@ -117,7 +125,7 @@ class _SliderHandleState extends State<SliderHandle> {
               onVerticalDragStart: handleDrag,
               onVerticalDragUpdate: handleDrag,
               onVerticalDragEnd: (_) => updateFinalHumidity(),
-              child: SliderBall(),
+              child: const SliderBall(),
             ),
           ),
         ],

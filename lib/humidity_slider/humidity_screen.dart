@@ -17,7 +17,7 @@ class HumidityScreen extends StatelessWidget {
         Provider(create: (_) => HumidityConfig()),
         ChangeNotifierProvider(create: (_) => Humidity())
       ],
-      child: HSScaffold(
+      child: const HSScaffold(
         activeIndex: 1,
         body: HumiditySliderPage(),
       ),
@@ -36,7 +36,7 @@ class HumiditySliderPage extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         image: kShowBack
-            ? DecorationImage(
+            ? const DecorationImage(
                 image: AssetImage("assets/design.png"),
                 fit: BoxFit.cover,
               )
@@ -44,8 +44,8 @@ class HumiditySliderPage extends StatelessWidget {
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
+        children: const [
+          SizedBox(
             width: 208,
             child: HumiditySlider(),
           ),

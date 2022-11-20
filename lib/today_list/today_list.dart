@@ -17,9 +17,7 @@ class TodayListScreen extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.dark.copyWith(statusBarBrightness: Brightness.dark),
     );
-    return Container(
-      child: TodayList(),
-    );
+    return const TodayList();
   }
 }
 
@@ -31,7 +29,7 @@ class TodayList extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.fill,
             image: AssetImage(
@@ -45,7 +43,7 @@ class TodayList extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Search(),
+                const Search(),
                 Expanded(
                   child: CustomScrollView(
                     slivers: [
@@ -146,15 +144,12 @@ class TodayList extends StatelessWidget {
 
 class TodayListTile extends StatefulWidget {
   const TodayListTile({
-    Key? key,
+    super.key,
     required this.title,
     required this.icon,
     required this.main,
     this.extra,
-  })  : assert(main != null),
-        assert(title != null),
-        assert(icon != null),
-        super(key: key);
+  });
 
   final String title;
   final HeaderIcon icon;
@@ -162,7 +157,7 @@ class TodayListTile extends StatefulWidget {
   final Widget? extra;
 
   @override
-  _TodayListTileState createState() => _TodayListTileState();
+  State<TodayListTile> createState() => _TodayListTileState();
 }
 
 class _TodayListTileState extends State<TodayListTile> {
@@ -204,8 +199,7 @@ class _TodayListTileState extends State<TodayListTile> {
           setMaxExtend: (bool isOpen) {
             setState(() {
               this.isOpen = isOpen;
-              this.maxExtend =
-                  (isOpen ? mainHeight + extraHeight : mainHeight) + 45;
+              maxExtend = (isOpen ? mainHeight + extraHeight : mainHeight) + 45;
             });
           }),
     );
@@ -243,7 +237,7 @@ class _TodayListTileDelegate extends SliverPersistentHeaderDelegate {
       child: Transform.translate(
         offset: Offset(0, dy),
         child: Container(
-          margin: EdgeInsets.only(bottom: 5),
+          margin: const EdgeInsets.only(bottom: 5),
           height: isShrinking ? 40 : null,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
@@ -254,7 +248,7 @@ class _TodayListTileDelegate extends SliverPersistentHeaderDelegate {
                   color: Colors.black.withOpacity(0.18),
                 ),
                 child: SingleChildScrollView(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -280,11 +274,11 @@ class _TodayListTileDelegate extends SliverPersistentHeaderDelegate {
 
     if (isShrinking) {
       return SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         child: IgnorePointer(
           ignoringSemantics: false,
           child: Container(
-            padding: EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(bottom: 10),
             child: child,
           ),
         ),
@@ -296,20 +290,20 @@ class _TodayListTileDelegate extends SliverPersistentHeaderDelegate {
 
   Padding tileHeader() {
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Row(
         children: [
           widget!.icon,
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Text(
             widget!.title,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white30,
               fontWeight: FontWeight.w500,
               fontSize: 14,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           if (widget!.extra != null)
             ArrowButton(
               onTap: setMaxExtend!,
@@ -341,11 +335,11 @@ class _BrandTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       child: Table(
-        defaultColumnWidth: FlexColumnWidth(0.2),
+        defaultColumnWidth: const FlexColumnWidth(0.2),
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-        columnWidths: {
+        columnWidths: const {
           1: FlexColumnWidth(1),
           2: FlexColumnWidth(0.5),
         },

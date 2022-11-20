@@ -10,7 +10,7 @@ class GlithEffect extends StatefulWidget {
   final Widget? child;
 
   @override
-  _GlithEffectState createState() => _GlithEffectState();
+  State<GlithEffect> createState() => _GlithEffectState();
 }
 
 class _GlithEffectState extends State<GlithEffect>
@@ -21,13 +21,11 @@ class _GlithEffectState extends State<GlithEffect>
   @override
   void initState() {
     _controller = GlitchController(
-      duration: Duration(
-        milliseconds: 400,
-      ),
+      duration: const Duration(milliseconds: 400),
     );
 
     _timer = Timer.periodic(
-      Duration(seconds: 3),
+      const Duration(seconds: 3),
       (_) {
         _controller!
           ..reset()
@@ -174,7 +172,9 @@ class GlitchController extends Animation<int?>
 
   @override
   void dispose() {
-    _timers.forEach((timer) => timer.cancel());
+    for (var timer in _timers) {
+      timer.cancel();
+    }
     super.dispose();
   }
 

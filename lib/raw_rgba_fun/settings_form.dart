@@ -7,7 +7,7 @@ class SettingsForm extends StatefulWidget {
   const SettingsForm({Key? key}) : super(key: key);
 
   @override
-  _SettingsFormState createState() => _SettingsFormState();
+  State<SettingsForm> createState() => _SettingsFormState();
 }
 
 class _SettingsFormState extends State<SettingsForm> {
@@ -17,6 +17,7 @@ class _SettingsFormState extends State<SettingsForm> {
   late double _size;
   late double _speed;
 
+  @override
   void initState() {
     var settings = context.read<Settings>();
     _controller = TextEditingController(text: settings.text);
@@ -27,6 +28,7 @@ class _SettingsFormState extends State<SettingsForm> {
     super.initState();
   }
 
+  @override
   void dispose() {
     _controller!.dispose();
     super.dispose();
@@ -54,7 +56,7 @@ class _SettingsFormState extends State<SettingsForm> {
               settings.updateText(value);
             },
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           _buildSlider(
             'Size',
             _size,

@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 class Search extends StatelessWidget {
+  const Search({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.only(bottom: 10),
+      decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
             blurRadius: 5,
@@ -45,7 +47,7 @@ class Search extends StatelessWidget {
                   'Search',
                   style: TextStyle(color: BrandColors.pink, fontSize: 16),
                 ),
-                Spacer(),
+                const Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 7),
                   child: Icon(

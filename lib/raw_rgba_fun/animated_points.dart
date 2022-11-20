@@ -6,10 +6,10 @@ import 'package:flutter_fun/raw_rgba_fun/settings.dart';
 import 'package:provider/provider.dart';
 
 class AnimatedPoints extends StatefulWidget {
-  AnimatedPoints({Key? key}) : super(key: key);
+  const AnimatedPoints({Key? key}) : super(key: key);
 
   @override
-  _AnimatedPointsState createState() => _AnimatedPointsState();
+  State<AnimatedPoints> createState() => _AnimatedPointsState();
 }
 
 class _AnimatedPointsState extends State<AnimatedPoints>
@@ -20,7 +20,7 @@ class _AnimatedPointsState extends State<AnimatedPoints>
     controller = AnimationController(
       lowerBound: 0.0,
       upperBound: 1000.0,
-      duration: Duration(seconds: 1000),
+      duration: const Duration(seconds: 1000),
       vsync: this,
     );
     controller.forward();
@@ -38,7 +38,7 @@ class _AnimatedPointsState extends State<AnimatedPoints>
     var points = context.watch<PointNotifier>().points;
     var settings = context.watch<Settings>();
 
-    return Container(
+    return SizedBox(
       height: 300,
       width: MediaQuery.of(context).size.width,
       child: AnimatedBuilder(

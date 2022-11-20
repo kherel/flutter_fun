@@ -9,6 +9,8 @@ import 'package:provider/provider.dart';
 import 'animated_points.dart';
 
 class RawRgbaAnimationScreen extends StatelessWidget {
+  const RawRgbaAnimationScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -21,7 +23,7 @@ class RawRgbaAnimationScreen extends StatelessWidget {
           body: SafeArea(
             child: SingleChildScrollView(
               child: Column(
-                children: [
+                children: const [
                   MainScene(),
                   SettingsForm(),
                 ],
@@ -35,8 +37,10 @@ class RawRgbaAnimationScreen extends StatelessWidget {
 }
 
 class MainScene extends StatefulWidget {
+  const MainScene({super.key});
+
   @override
-  _MainSceneState createState() => _MainSceneState();
+  State<MainScene> createState() => _MainSceneState();
 }
 
 class _MainSceneState extends State<MainScene> {
@@ -44,7 +48,7 @@ class _MainSceneState extends State<MainScene> {
   Widget build(BuildContext context) {
     final settings = context.watch<Settings>();
     return context.watch<PointNotifier>().isReady
-        ? AnimatedPoints()
+        ? const AnimatedPoints()
         : ScreenShot(
             size: settings.size,
             speed: settings.speed,

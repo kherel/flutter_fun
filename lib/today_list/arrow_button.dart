@@ -3,19 +3,17 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 class ArrowButton extends StatefulWidget {
-  ArrowButton({
-    Key? key,
+  const ArrowButton({
+    super.key,
     required this.onTap,
     required this.isExpanded,
-  })  : assert(onTap != null),
-        assert(isExpanded != null),
-        super(key: key);
+  });
 
   final void Function(bool isExpanded) onTap;
   final bool isExpanded;
 
   @override
-  _ArrowButtonState createState() => _ArrowButtonState();
+  State<ArrowButton> createState() => _ArrowButtonState();
 }
 
 class _ArrowButtonState extends State<ArrowButton>
@@ -32,7 +30,7 @@ class _ArrowButtonState extends State<ArrowButton>
   @override
   void initState() {
     _controller = AnimationController(
-      duration: Duration(milliseconds: 150),
+      duration: const Duration(milliseconds: 150),
       vsync: this,
     );
     _animation = _controller.drive(CurveTween(curve: Curves.easeIn));
@@ -66,7 +64,7 @@ class _ArrowButtonState extends State<ArrowButton>
               child: child,
             );
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_forward_ios,
             color: Colors.white30,
             size: 14,
