@@ -5,7 +5,7 @@ import 'package:flutter_fun/humidity_slider/slider_ball.dart';
 import 'package:provider/provider.dart';
 
 import 'humidity.dart';
-import 'humidity_congfig.dart';
+import 'humidity_config.dart';
 import 'humidity_cureved_line.dart';
 import 'measurement_numbers.dart';
 import 'theme.dart';

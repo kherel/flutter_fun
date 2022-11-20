@@ -1,6 +1,6 @@
 # flutter_fun
 
-Just small ui challenges for Fun.
+Just small flutter experiments for Fun.
 
 ## Glitch effect experiment
 

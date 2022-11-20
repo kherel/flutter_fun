@@ -3,7 +3,7 @@ import 'package:flutter_fun/humidity_slider/theme.dart';
 import 'package:provider/provider.dart';
 
 import 'humidity.dart';
-import 'humidity_congfig.dart';
+import 'humidity_config.dart';
 
 class MeasurementNumbers extends StatefulWidget {
   const MeasurementNumbers(

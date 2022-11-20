@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fun/calculator/calculator.dart';
 import 'package:flutter_fun/glitch/glitch_page_screen.dart';
 import 'package:flutter_fun/raw_rgba_fun/raw_rgba_screen.dart';
 import 'package:flutter_fun/utils/navigation.dart';
@@ -32,6 +33,12 @@ class Home extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          ElevatedButton(
+            child: const Text('Calculator'),
+            onPressed: () => Navigator.of(context).push(
+              noAnimationRoute(const CalculatorScreen()),
+            ),
+          ),
           ElevatedButton(
             child: const Text('Glitch effect'),
             onPressed: () => Navigator.of(context).push(

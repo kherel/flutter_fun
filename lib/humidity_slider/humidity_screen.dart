@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'humidity.dart';
-import 'humidity_congfig.dart';
+import 'humidity_config.dart';
 import 'humidity_info.dart';
 import 'scaffold.dart';
 import 'slider.dart';
